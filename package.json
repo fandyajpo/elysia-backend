@@ -6,6 +6,13 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "@hokify/agenda": "latest",
+    "preact-render-to-string": "latest",
+    "preact": "latest",
+    "@elysiajs/jwt": "latest",
+    "@elysiajs/cookie": "latest",
+    "@elysiajs/html": "latest",
+    "@elysiajs/stream": "latest",
     "elysia": "latest"
   },
   "devDependencies": {
