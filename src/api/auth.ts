@@ -1,9 +1,9 @@
-import { Elysia } from "elysia";
-import { cookie } from "@elysiajs/cookie";
+import { Elysia, t } from "elysia";
+import { withCookie } from "plugin/cookie";
 import { withJwt } from "plugin/jwt";
-export const authApi = new Elysia()
+export const authApi = new Elysia({ prefix: "v1" })
   .use(withJwt)
-  .use(cookie())
+  .use(withCookie)
   .group("/auth", (app) =>
     app
       .derive(({ headers }) => {
@@ -15,11 +15,15 @@ export const authApi = new Elysia()
         };
       })
       .get("/", () => "Auth Route")
-      .get("/:email", async ({ jwt, params, setCookie }) => {
+      .post("/login", ({ body }) => body, {
+        body: t.Object({
+          x: t.Optional(t.Number()),
+          y: t.Optional(t.Number()),
+        }),
+      })
+      .post("/:email", async ({ jwt, params, setCookie }) => {
         const token = await jwt.sign(params);
-        setCookie("nimble", token, {
-          httpOnly: true,
-        });
+        setCookie("nimble", token);
         return `Sign in as ${token}`;
       })
       .get("/checker", async ({ jwt, cookie }) => {

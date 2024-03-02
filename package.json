@@ -6,14 +6,15 @@
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
-    "@hokify/agenda": "latest",
-    "preact-render-to-string": "latest",
-    "preact": "latest",
-    "@elysiajs/jwt": "latest",
+    "@apollo/server": "^4.10.0",
+    "@elysiajs/apollo": "^0.8.0",
     "@elysiajs/cookie": "latest",
     "@elysiajs/html": "latest",
+    "@elysiajs/jwt": "latest",
     "@elysiajs/stream": "latest",
-    "elysia": "latest"
+    "@hokify/agenda": "latest",
+    "elysia": "latest",
+    "graphql": "^16.8.1"
   },
   "devDependencies": {
     "bun-types": "latest"
